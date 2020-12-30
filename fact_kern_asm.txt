@@ -1,0 +1,73 @@
+push 0
+pop rax
+push 0
+pop rbx
+push 0
+pop [0]
+call main
+hlt
+          
+main:       
+push rax  
+pop  rbx  
+push rax  
+push rax  
+push 3   
+add       
+pop rax   
+pop [rax] 
+push 0
+pop [rbx + 1]
+kern
+in              
+pop [rbx + 1]  
+push [rbx + 1]
+call factorial
+pop [rbx + 2]
+push [rbx + 2]
+out
+          
+factorial:       
+push rax  
+pop  rbx  
+push rax  
+push rax  
+push 2   
+add       
+pop rax   
+pop [rax] 
+pop [rbx + 1]
+push [rbx + 1]
+push 0
+je true_0           
+push 0            
+jmp end_comp_0   
+true_0:          
+push 1            
+jmp end_comp_0   
+end_comp_0:      
+push 1       
+je  true_1  
+jmp false_1 
+true_1:     
+push 1
+push [rax]  
+pop rax     
+push [rax]  
+pop rbx     
+ret         
+jmp end_cond_1  
+false_1:        
+push [rbx + 1]
+push [rbx + 1]
+push 1
+sub
+call factorial
+mul
+push [rax]  
+pop rax     
+push [rax]  
+pop rbx     
+ret         
+jmp end_cond_1  
+end_cond_1:     
