@@ -26,8 +26,7 @@ void NodeDestruct(Node* node) {
 
 void TreeConstruct(Tree* tree) {
     assert(tree != nullptr);
-
-    //tree->variables = (int*) calloc(MAX_VARIABLES_COUNT, sizeof(int));
+    
     tree->root = nullptr;
 
 }
